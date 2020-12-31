@@ -1,7 +1,5 @@
-﻿@[TOC](【小白CV教程】YOLOv5+Deepsort实现车辆行人的检测、追踪和计数)
-
-# 本文禁止转载!
 本文地址：[https://blog.csdn.net/weixin_44936889/article/details/112002152](https://blog.csdn.net/weixin_44936889/article/details/112002152)
+
 # 项目简介：
 使用YOLOv5+Deepsort实现车辆行人追踪和计数，代码封装成一个Detector类，更容易嵌入到自己的项目中。
 
