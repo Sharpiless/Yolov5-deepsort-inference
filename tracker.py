@@ -43,31 +43,31 @@ def update_tracker(target_detector, image):
 
         bbox_xywh = []
         confs = []
-
-        # Adapt detections to deep sort input format
-        for x1, y1, x2, y2, _, conf in bboxes:
-            
-            obj = [
-                int((x1+x2)/2), int((y1+y2)/2),
-                x2-x1, y2-y1
-            ]
-            bbox_xywh.append(obj)
-            confs.append(conf)
-
-        xywhs = torch.Tensor(bbox_xywh)
-        confss = torch.Tensor(confs)
-
-        # Pass detections to deepsort
-        outputs = deepsort.update(xywhs, confss, image)
-
-
         bboxes2draw = []
         face_bboxes = []
-        for value in list(outputs):
-            x1,y1,x2,y2,track_id = value
-            bboxes2draw.append(
-                (x1, y1, x2, y2, '', track_id)
-            )
+        if len(bboxes):
+
+            # Adapt detections to deep sort input format
+            for x1, y1, x2, y2, _, conf in bboxes:
+                
+                obj = [
+                    int((x1+x2)/2), int((y1+y2)/2),
+                    x2-x1, y2-y1
+                ]
+                bbox_xywh.append(obj)
+                confs.append(conf)
+
+            xywhs = torch.Tensor(bbox_xywh)
+            confss = torch.Tensor(confs)
+
+            # Pass detections to deepsort
+            outputs = deepsort.update(xywhs, confss, image)
+
+            for value in list(outputs):
+                x1,y1,x2,y2,track_id = value
+                bboxes2draw.append(
+                    (x1, y1, x2, y2, '', track_id)
+                )
 
         image = plot_bboxes(image, bboxes2draw)
 
