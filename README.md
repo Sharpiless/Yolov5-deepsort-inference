@@ -132,6 +132,13 @@ result = det.feedCap(im, func_status)
 
 
 # 联系作者：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20201120115403928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70#pic_center)
+
+> B站：[https://space.bilibili.com/470550823](https://space.bilibili.com/470550823)
+
+> CSDN：[https://blog.csdn.net/weixin_44936889](https://blog.csdn.net/weixin_44936889)
+
+> AI Studio：[https://aistudio.baidu.com/aistudio/personalcenter/thirdview/67156](https://aistudio.baidu.com/aistudio/personalcenter/thirdview/67156)
+
+> Github：[https://github.com/Sharpiless](https://github.com/Sharpiless)
 
 遵循 GNU General Public License v3.0 协议，标明目标检测部分来源：https://github.com/ultralytics/yolov5/
