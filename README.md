@@ -1,5 +1,9 @@
 本文地址：[https://blog.csdn.net/weixin_44936889/article/details/112002152](https://blog.csdn.net/weixin_44936889/article/details/112002152)
 
+# 注意：
+
+本项目使用Yolov5 3.0版本，4.0版本需要替换掉models和utils文件夹
+
 # 项目简介：
 使用YOLOv5+Deepsort实现车辆行人追踪和计数，代码封装成一个Detector类，更容易嵌入到自己的项目中。
 
