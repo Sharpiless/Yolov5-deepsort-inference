@@ -20,7 +20,7 @@ class YamlParser(edict):
     
     def merge_from_file(self, config_file):
         with open(config_file, 'r') as fo:
-            self.update(yaml.load(fo.read()))
+            self.update(yaml.load(fo.read(), Loader=yaml.CLoader))
 
     
     def merge_from_dict(self, config_dict):
