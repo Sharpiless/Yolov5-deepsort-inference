@@ -1,23 +1,45 @@
-本文地址：[https://blog.csdn.net/weixin_44936889/article/details/112002152](https://blog.csdn.net/weixin_44936889/article/details/112002152)
 
-# 注意：
+# **YOLOv5 + DeepSort 用于目标跟踪与计数**  
+🚗🚶‍♂️ **使用 YOLOv5 和 DeepSort 实现车辆与行人实时跟踪与计数**
 
-## 本项目使用Yolov5 3.0版本，最新版本5.0请移步：
+[![GitHub stars](https://img.shields.io/github/stars/Sharpiless/Yolov5-deepsort-inference?style=social)](https://github.com/Sharpiless/Yolov5-deepsort-inference)  [![GitHub forks](https://img.shields.io/github/forks/Sharpiless/Yolov5-deepsort-inference?style=social)](https://github.com/Sharpiless/Yolov5-deepsort-inference)  [![License](https://img.shields.io/github/license/Sharpiless/Yolov5-deepsort-inference)](https://github.com/Sharpiless/Yolov5-deepsort-inference/blob/main/LICENSE)
 
-[https://github.com/Sharpiless/yolov5-deepsort](https://github.com/Sharpiless/yolov5-deepsort)
+---
 
-## 注：新版本添加了类别显示功能
+## **📌 项目简介**
 
-# 项目简介：
-使用YOLOv5+Deepsort实现车辆行人追踪和计数，代码封装成一个Detector类，更容易嵌入到自己的项目中。
+本项目将 **YOLOv5** 与 **DeepSort** 相结合，实现了对目标的实时跟踪与计数。提供了一个封装的 `Detector` 类，方便将此功能嵌入到自定义项目中。  
 
-代码地址（欢迎star）：
+🔗 **阅读完整博客**：[【小白CV教程】YOLOv5+Deepsort实现车辆行人的检测、追踪和计数](https://blog.csdn.net/weixin_44936889/article/details/112002152)
 
-[https://github.com/Sharpiless/Yolov5-deepsort-inference](https://github.com/Sharpiless/Yolov5-deepsort-inference)
+---
 
-最终效果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20201231090541223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
-# YOLOv5检测器：
+## **🚀 核心功能**
+
+- **目标跟踪**：实时跟踪车辆与行人。
+- **计数功能**：轻松统计视频流中的车辆或行人数。
+- **封装式接口**：`Detector` 类封装了检测与跟踪逻辑，便于集成。
+- **高度自定义**：支持训练自己的 YOLOv5 模型并无缝接入框架。
+
+---
+
+## **🔧 使用说明**
+
+### **安装依赖**
+```bash
+pip install -r requirements.txt
+```
+
+确保安装了 `requirements.txt` 文件中列出的所有依赖。
+### **运行 Demo**
+```bash
+python demo.py
+```
+---
+
+## **🛠️ 开发说明**
+
+### **YOLOv5 检测器**
 
 ```python
 class Detector(baseDet):
@@ -79,12 +101,9 @@ class Detector(baseDet):
                         (x1, y1, x2, y2, lbl, conf))
 
         return im, pred_boxes
-
 ```
-
-调用 self.detect 方法返回图像和预测结果
-
-# DeepSort追踪器：
+- 调用 `self.detect()` 方法返回图像和预测结果
+### **DeepSort 追踪器**
 
 ```python
 deepsort = DeepSort(cfg.DEEPSORT.REID_CKPT,
@@ -93,34 +112,28 @@ deepsort = DeepSort(cfg.DEEPSORT.REID_CKPT,
                     max_age=cfg.DEEPSORT.MAX_AGE, n_init=cfg.DEEPSORT.N_INIT, nn_budget=cfg.DEEPSORT.NN_BUDGET,
                     use_cuda=True)
 ```
+- 调用 `self.update()` 方法更新追踪结果
+---
 
-调用 self.update 方法更新追踪结果
+## **📊 训练自己的模型**
 
-# 运行demo：
-
-```bash
-python demo.py
-```
-
-# 训练自己的模型：
-参考我的另一篇博客：
-
+如果需要训练自定义的 YOLOv5 模型，请参考以下教程：  
 [【小白CV】手把手教你用YOLOv5训练自己的数据集（从Windows环境配置到模型部署）](https://blog.csdn.net/weixin_44936889/article/details/110661862)
 
-训练好后放到 weights 文件夹下
+训练完成后，将模型权重文件放置于 `weights` 文件夹中。
 
-# 调用接口：
+---
 
-## 创建检测器：
+## **📦 API 调用**
 
+### **初始化检测器**
 ```python
 from AIDetector_pytorch import Detector
 
 det = Detector()
 ```
 
-## 调用检测接口：
-
+### **调用检测接口**
 ```python
 func_status = {}
 func_status['headpose'] = None
@@ -128,25 +141,34 @@ func_status['headpose'] = None
 result = det.feedCap(im, func_status)
 ```
 
-其中 im 为 BGR 图像
+- `im`: 输入的 BGR 图像。
+- `result['frame']`: 检测结果的可视化图像。
 
-返回的 result 是字典，result['frame'] 返回可视化后的图像
+---
 
-# 关注我的公众号：
+## **✨ 可视化效果**
 
-感兴趣的同学关注我的公众号——可达鸭的深度学习教程：
+![效果图](https://img-blog.csdnimg.cn/20201231090541223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210127153004430.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
+---
 
+## **📚 联系作者** 
+  - Bilibili: [https://space.bilibili.com/470550823](https://space.bilibili.com/470550823)  
+  - CSDN: [https://blog.csdn.net/weixin_44936889](https://blog.csdn.net/weixin_44936889)  
+  - AI Studio: [https://aistudio.baidu.com/aistudio/personalcenter/thirdview/67156](https://aistudio.baidu.com/aistudio/personalcenter/thirdview/67156)  
+  - GitHub: [https://github.com/Sharpiless](https://github.com/Sharpiless)  
 
-# 联系作者：
+---
 
-> B站：[https://space.bilibili.com/470550823](https://space.bilibili.com/470550823)
+## **🎉 关注我**
 
-> CSDN：[https://blog.csdn.net/weixin_44936889](https://blog.csdn.net/weixin_44936889)
+关注我的微信公众号，获取更多深度学习教程：  
+**公众号：可达鸭的深度学习教程**  
+![微信公众号二维码](https://img-blog.csdnimg.cn/20210127153004430.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
 
-> AI Studio：[https://aistudio.baidu.com/aistudio/personalcenter/thirdview/67156](https://aistudio.baidu.com/aistudio/personalcenter/thirdview/67156)
+---
 
-> Github：[https://github.com/Sharpiless](https://github.com/Sharpiless)
+## **💡 许可证**
 
-遵循 GNU General Public License v3.0 协议，标明目标检测部分来源：https://github.com/ultralytics/yolov5/
+本项目遵循 **GNU General Public License v3.0** 协议。  
+**标明目标检测部分来源**：[https://github.com/ultralytics/yolov5](https://github.com/ultralytics/yolov5)
