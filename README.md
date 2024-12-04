@@ -4,6 +4,8 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/Sharpiless/Yolov5-deepsort-inference?style=social)](https://github.com/Sharpiless/Yolov5-deepsort-inference)  [![GitHub forks](https://img.shields.io/github/forks/Sharpiless/Yolov5-deepsort-inference?style=social)](https://github.com/Sharpiless/Yolov5-deepsort-inference)  [![License](https://img.shields.io/github/license/Sharpiless/Yolov5-deepsort-inference)](https://github.com/Sharpiless/Yolov5-deepsort-inference/blob/main/LICENSE)
 
+最新版本：[https://github.com/Sharpiless/YOLOv11-DeepSort](https://github.com/Sharpiless/YOLOv11-DeepSort)
+
 ---
 
 ## **📌 项目简介**
