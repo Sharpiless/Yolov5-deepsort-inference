@@ -162,13 +162,24 @@ result = det.feedCap(im, func_status)
 
 ---
 
-## **🎉 关注我**
-
-关注我的微信公众号，获取更多深度学习教程：  
-**公众号：可达鸭的深度学习教程**  
-![微信公众号二维码](https://img-blog.csdnimg.cn/20210127153004430.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
-
----
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=Sharpiless/Yolov5-deepsort-inference&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=Sharpiless/Yolov5-deepsort-inference&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=Sharpiless/Yolov5-deepsort-inference&type=Date"
+  />
+</picture>
 
 ## **💡 许可证**
 
